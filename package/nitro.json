@@ -1,0 +1,12 @@
+{
+	"cxxNamespace": ["imagecompressor"],
+	"ios": {
+		"iosModuleName": "ImageCompressor"
+	},
+	"android": {
+		"androidNamespace": ["imagecompressor"],
+		"androidCxxLibName": "ImageCompressor"
+	},
+	"autolinking": {},
+	"ignorePaths": ["node_modules"]
+}
