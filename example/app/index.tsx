@@ -1,15 +1,43 @@
+import { Image } from 'expo-image'
+import * as ImagePicker from 'expo-image-picker'
+import { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function App() {
+  const [image, setImage] = useState<string | null>(null)
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      allowsEditing: false,
+      quality: 1,
+    })
+
+    console.log(result)
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri)
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Nitro!</Text>
       <View style={styles.separator} />
-      <TouchableOpacity onPress={() => alert('Hello!')}>
+      <TouchableOpacity onPress={() => pickImage()}>
         <View style={styles.button}>
-          <Text>Tap me!</Text>
+          <Text>Pick an image</Text>
         </View>
       </TouchableOpacity>
+
+      <View style={styles.separator} />
+
+      <Image
+        source={{ uri: image }}
+        style={styles.image}
+        contentFit="contain"
+        transition={200}
+      />
     </View>
   )
 }
@@ -26,7 +54,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 10,
     height: 1,
     width: '80%',
   },
@@ -34,5 +62,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#d5d5ff',
     padding: 10,
     borderRadius: 5,
+  },
+  image: {
+    height: 300,
+    width: '100%',
   },
 })
