@@ -1,17 +1,21 @@
 {
-	"name": "nitro-image-compressor",
-	"author": "Henry Paulino <me@henrypl.com> (https://github.com/corasan)",
-	"packageManager": "bun@1.1.34",
-	"main": "lib/index.js",
-	"types": "lib/index.d.ts",
-	"scripts": {
-		"typescript": "bun --filter=\"**\" typescript",
-		"clean": "rm -rf package/tsconfig.tsbuildinfo package/node_modules package/lib",
-		"specs": "cd package && bun specs && cd .. && cd example/ios && pod install && cd ../../"
-	},
-	"workspaces": ["package", "example"],
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"typescript": "^5.5.4"
-	}
+  "name": "nitro-image-compressor",
+  "author": "Henry Paulino <me@henrypl.com> (https://github.com/corasan)",
+  "packageManager": "bun@1.1.34",
+  "main": "lib/index",
+  "module": "lib/index",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "typescript": "bun --filter=\"**\" typescript",
+    "clean": "rm -rf package/tsconfig.tsbuildinfo package/node_modules package/lib",
+    "specs": "cd package && bun specs && cd .. && cd example/ios && pod install && cd ../../"
+  },
+  "workspaces": [
+    "package",
+    "example"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "typescript": "^5.5.4"
+  }
 }
