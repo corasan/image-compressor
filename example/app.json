@@ -1,20 +1,25 @@
 {
-	"expo": {
-		"scheme": "acme",
-
-		"name": "example",
-		"slug": "example",
-		"ios": {
-			"bundleIdentifier": "com.example.example"
-		},
-		"plugins": [
-  		"expo-router",
-  		[
+  "expo": {
+    "scheme": "example",
+    "name": "image-compressor-example",
+    "slug": "image-compressor-example",
+    "ios": {
+      "bundleIdentifier": "com.example.image-compressor"
+    },
+    "plugins": [
+      "expo-router",
+      [
         "expo-image-picker",
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-		]
-	}
+    ],
+    "android": {
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.example.imagecompressor"
+    }
+  }
 }

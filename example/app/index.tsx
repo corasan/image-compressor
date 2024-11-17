@@ -1,3 +1,4 @@
+import { ImageCompressor } from '@corasan/image-compressor'
 import { Image } from 'expo-image'
 import * as ImagePicker from 'expo-image-picker'
 import { useState } from 'react'
@@ -13,7 +14,7 @@ export default function App() {
       quality: 1,
     })
 
-    console.log(result)
+    console.log(ImageCompressor.compress(result.assets[0].uri))
 
     if (!result.canceled) {
       setImage(result.assets[0].uri)
@@ -32,12 +33,14 @@ export default function App() {
 
       <View style={styles.separator} />
 
-      <Image
-        source={{ uri: image }}
-        style={styles.image}
-        contentFit="contain"
-        transition={200}
-      />
+      {!image ? null : (
+        <Image
+          source={{ uri: image }}
+          style={styles.image}
+          contentFit="contain"
+          transition={200}
+        />
+      )}
     </View>
   )
 }

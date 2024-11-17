@@ -29,8 +29,8 @@
 		"postinstall": "tsc || exit 0;",
 		"typecheck": "tsc --noEmit",
 		"clean": "rm -rf android/build node_modules/**/android/build lib",
-		"typescript": "tsc",
-		"specs": "typescript && nitro-codegen --logLevel=\"debug\""
+		"typescript": "tsc --noEmit false",
+    "specs": "bun run --filter=\"**\" typescript && bun nitro-codegen --logLevel=\"debug\""
 	},
 	"keywords": ["react-native", "nitro"],
 	"repository": {

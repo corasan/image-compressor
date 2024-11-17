@@ -7,6 +7,10 @@
 		"androidNamespace": ["imagecompressor"],
 		"androidCxxLibName": "ImageCompressor"
 	},
-	"autolinking": {},
+	"autolinking": {
+		"ImageCompressor": {
+			"cpp": "HybridImageCompressor"
+		}
+	},
 	"ignorePaths": ["node_modules"]
 }

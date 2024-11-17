@@ -7,7 +7,7 @@
 	"scripts": {
 		"typescript": "bun --filter=\"**\" typescript",
 		"clean": "rm -rf package/tsconfig.tsbuildinfo package/node_modules package/lib",
-		"spec": "cd package && bun specs && cd .."
+		"specs": "cd package && bun specs && cd .. && cd example/ios && pod install && cd ../../"
 	},
 	"workspaces": ["package", "example"],
 	"devDependencies": {
