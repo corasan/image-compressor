@@ -14,7 +14,7 @@ export default function App() {
       quality: 1,
     })
 
-    console.log(ImageCompressor.compress(result.assets[0].uri))
+    console.log(ImageCompressor.compress(result.assets[0].uri, { quality: 0.5 }))
 
     if (!result.canceled) {
       setImage(result.assets[0].uri)
