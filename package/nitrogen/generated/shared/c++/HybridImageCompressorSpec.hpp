@@ -13,10 +13,13 @@
 #error NitroModules cannot be found! Are you sure you installed NitroModules properly?
 #endif
 
+// Forward declaration of `ImageAsset` to properly resolve imports.
+namespace margelo::nitro::imagecompressor { struct ImageAsset; }
 // Forward declaration of `CompressionOptions` to properly resolve imports.
 namespace margelo::nitro::imagecompressor { struct CompressionOptions; }
 
 #include <string>
+#include "ImageAsset.hpp"
 #include <optional>
 #include "CompressionOptions.hpp"
 
@@ -51,7 +54,7 @@ namespace margelo::nitro::imagecompressor {
 
     public:
       // Methods
-      virtual std::string compress(const std::string& uri, const std::optional<CompressionOptions>& options) = 0;
+      virtual std::string compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) = 0;
 
     protected:
       // Hybrid Setup

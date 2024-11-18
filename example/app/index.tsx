@@ -13,8 +13,14 @@ export default function App() {
       allowsEditing: false,
       quality: 1,
     })
+    const img = {
+      uri: result.assets[0].uri,
+      width: result.assets[0].width,
+      height: result.assets[0].height,
+      fileSize: result.assets[0].fileSize,
+    }
 
-    console.log(ImageCompressor.compress(result.assets[0].uri, { quality: 0.5 }))
+    console.log('IMAGE ->', ImageCompressor.compress(img, { quality: 0.5 }))
 
     if (!result.canceled) {
       setImage(result.assets[0].uri)
