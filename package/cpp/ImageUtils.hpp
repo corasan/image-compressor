@@ -2,7 +2,6 @@
 #pragma once
 
 #include <vector>
-#include <string>
 
 namespace margelo::nitro::imagecompressor {
 

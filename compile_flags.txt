@@ -1,0 +1,12 @@
+-std=c++20
+-Wall
+-Wextra
+-I/usr/include
+-I/usr/local/include
+-I.
+-I/Users/henry/Projects/nitro-image-compressor/package/
+-I/Users/henry/Projects/nitro-image-compressor/package/cpp/
+-I/Users/henry/Projects/nitro-image-compressor/package/nitrogen/generated/shared/c++/
+-I/Users/henry/Projects/nitro-image-compressor/node_modules/react-native-nitro-modules/cpp/
+-I/Users/henry/Projects/nitro-image-compressor/node_modules/react-native-nitro-modules/cpp/core/
+--include-directory=/Users/henry/Projects/nitro-image-compressor/package/
