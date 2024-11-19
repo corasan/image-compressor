@@ -19,12 +19,11 @@ Pod::Spec.new do |s|
     # Autolinking/Registration (Objective-C++)
     "ios/**/*.{m,mm}",
     # Implementation (C++ objects)
-    "cpp/**/*.{hpp,cpp}"
-#    "ios/opencv2.xcframework/**/*.{h,hpp}"
+    "cpp/**/*.{hpp,cpp}",
+    "ios/opencv2.xcframework/**/*.{h,hpp}"
   ]
   
-  s.dependency "OpenCV"
-#  s.vendored_frameworks = "ios/opencv2.xcframework"
+  s.vendored_frameworks = "ios/opencv2.xcframework"
 
   load 'nitrogen/generated/ios/ImageCompressor+autolinking.rb'
   add_nitrogen_files(s)
