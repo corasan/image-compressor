@@ -6,6 +6,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function App() {
   const [image, setImage] = useState<string | null>(null)
+  const [compressedImage, setCompressedImage] = useState<string | null>(null)
 
   const pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -20,12 +21,16 @@ export default function App() {
       fileSize: result.assets[0].fileSize,
     }
 
-    console.log('IMAGE ->', ImageCompressor.compress(img, { quality: 0.5 }))
+    // console.log('IMAGE ->', ImageCompressor.compress(img, { quality: 0.2 }))
 
     if (!result.canceled) {
       setImage(result.assets[0].uri)
     }
+
+    setCompressedImage(ImageCompressor.compress(img, { quality: 0.2 }))
   }
+
+  console.log('COMPRESSED ->', compressedImage)
 
   return (
     <View style={styles.container}>
@@ -46,6 +51,19 @@ export default function App() {
           contentFit="contain"
           transition={200}
         />
+      )}
+      <View style={styles.separator} />
+
+      {!compressedImage ? null : (
+        <>
+          <Text style={styles.title}>Compressed Image</Text>
+          <Image
+            source={{ uri: compressedImage }}
+            style={styles.image}
+            contentFit="contain"
+            transition={200}
+          />
+        </>
       )}
     </View>
   )
