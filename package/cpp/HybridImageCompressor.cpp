@@ -22,14 +22,16 @@ std::string formatFileSize(uintmax_t bytes) {
     return ss.str();
 }
 
-std::string HybridImageCompressor::compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
+CompressedImageAsset HybridImageCompressor::compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
     // Parse options with defaults
-    auto opts = options.value_or(CompressionOptions(
-                                                    std::optional<double>(0.8),
-                                                    std::nullopt,
-                                                    std::nullopt,
-                                                    std::optional<std::string>("jpg")
-                                                    ));
+    auto opts = options.value_or(
+        CompressionOptions(
+            std::optional<double>(0.8),
+            std::nullopt,
+            std::nullopt,
+            std::optional<std::string>("jpg")
+        )
+    );
     
     // Strip file:// prefix if present
     std::string path = image.uri;
@@ -90,12 +92,6 @@ std::string HybridImageCompressor::compress(const ImageAsset& image, const std::
             static_cast<int>((1.0 - quality) * 9)
         };
         extension = ".png";
-    } else if (format == "webp") {
-        compression_params = {
-            cv::IMWRITE_WEBP_QUALITY,
-            static_cast<int>(quality * 100)
-        };
-        extension = ".webp";
     } else {
         throw std::runtime_error("Unsupported output format: " + format);
     }
@@ -111,16 +107,9 @@ std::string HybridImageCompressor::compress(const ImageAsset& image, const std::
     
     // Get compressed file size
     uintmax_t compressedSize = std::filesystem::file_size(outputPath);
-    
-    // Format the output string
-//    std::ostringstream result;
-//    result << "Path: " << outputPath.string() << "\n"
-//    << "Original dimensions: " << originalWidth << "x" << originalHeight << "\n"
-//    << "Final dimensions: " << img.cols << "x" << img.rows << "\n"
-//    << "Quality: " << quality << "\n"
-//    << "Compressed size: " << formatFileSize(compressedSize);
-    
-    return outputPath;
+    CompressedImageAsset properties = CompressedImageAsset(outputPath, img.cols, img.rows, formatFileSize(compressedSize));
+
+    return properties;
 }
 
 } // namespace margelo::nitro::imagecompressor
