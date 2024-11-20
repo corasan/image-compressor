@@ -1,44 +1,72 @@
-import type { CompressedImageAsset } from '@corasan/image-compressor'
+import { type CompressedImageAsset, ImageCompressor } from '@corasan/image-compressor'
 import { Image } from 'expo-image'
 import type * as ImagePicker from 'expo-image-picker'
-import { Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { formatBytes } from '../utils/formatBytes'
 
-export function ImageDetails({
-  image,
-}: { image: CompressedImageAsset | ImagePicker.ImagePickerAsset }) {
+type ImageDetailsProps = {
+  image: CompressedImageAsset | ImagePicker.ImagePickerAsset
+}
+
+export function ImageDetails({ image }: ImageDetailsProps) {
+  const saveImage = async () => {
+    const filePath = image.uri.replace('file://', '')
+    console.log(filePath)
+    const result = ImageCompressor.saveImage(filePath)
+    console.log('Result ->', result)
+  }
   return (
-    <View
-      style={{
-        flexDirection: 'column',
-        width: '100%',
-        gap: 8,
-      }}
-    >
+    <View style={styles.container}>
       <Image
         source={{ uri: image.uri }}
-        style={{ height: 240, width: '100%' }}
+        style={styles.image}
         contentFit="contain"
         transition={200}
       />
-      <View
-        style={{
-          padding: 8,
-          borderRadius: 6,
-          backgroundColor: '#eee',
-          marginHorizontal: 8,
-        }}
-      >
-        <Text>
-          Dimensions: {image.height} x {image.width}
-        </Text>
-        <Text>
-          File Size:{' '}
-          {typeof image.fileSize === 'string'
-            ? image.fileSize
-            : formatBytes(image.fileSize)}
-        </Text>
+      <View style={styles.detailsContainer}>
+        <View>
+          <Text>
+            Dimensions: {image.height} x {image.width}
+          </Text>
+          <Text>
+            File Size:{' '}
+            {typeof image.fileSize === 'string'
+              ? image.fileSize
+              : formatBytes(image.fileSize)}
+          </Text>
+        </View>
+        {typeof image.fileSize === 'string' ? (
+          <TouchableOpacity onPress={() => saveImage()}>
+            <Text style={styles.buttonText}>Save</Text>
+          </TouchableOpacity>
+        ) : null}
       </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    width: '100%',
+    gap: 8,
+  },
+  detailsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 8,
+    borderRadius: 6,
+    backgroundColor: '#eee',
+    marginHorizontal: 24,
+  },
+  image: {
+    height: 220,
+    width: '100%',
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    padding: 4,
+    color: '#67A',
+  },
+})
