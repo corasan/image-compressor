@@ -14,9 +14,7 @@ public func saveImageToPhotos(_ imagePath: String) -> Bool {
         print("Could not load image from path: \(imagePath)")
         return false
     }
-    
-    let url = URL(fileURLWithPath: imagePath)
-    
+        
     var success = false
     let semaphore = DispatchSemaphore(value: 0)
     
