@@ -20,7 +20,6 @@ namespace margelo::nitro::imagecompressor {
         static std::string formatFileSize(uintmax_t bytes);
         
     private:
-        // Internal compression helpers
         static cv::Mat loadImage(const std::string& path);
         static cv::Mat resizeImage(const cv::Mat& img, const std::optional<double>& maxWidth, const std::optional<double>& maxHeight);
         static std::pair<std::vector<int>, std::string> getCompressionParams(double quality, const std::string& format);

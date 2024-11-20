@@ -3,13 +3,13 @@ import Foundation
 import UIKit
 
 public func saveImageToPhotos(_ imagePath: String) -> Bool {
-    // Validate file exists
+    // check if file exists
     guard FileManager.default.fileExists(atPath: imagePath) else {
         print("Image file does not exist at path: \(imagePath)")
         return false
     }
     
-    // Validate image can be loaded
+    // check if image can be loaded
     guard let image = UIImage(contentsOfFile: imagePath) else {
         print("Could not load image from path: \(imagePath)")
         return false
@@ -18,7 +18,7 @@ public func saveImageToPhotos(_ imagePath: String) -> Bool {
     var success = false
     let semaphore = DispatchSemaphore(value: 0)
     
-    // Ensure we're on the main thread
+    // make sure it's using the main thread
     if !Thread.isMainThread {
         var result = false
         DispatchQueue.main.sync {
@@ -58,6 +58,7 @@ public func saveImageToPhotos(_ imagePath: String) -> Bool {
     semaphore.wait()
     return success
     
+    // save photos to library
     func saveToPhotos() {
         PHPhotoLibrary.shared().performChanges({
             let request = PHAssetChangeRequest.creationRequestForAsset(from: image)

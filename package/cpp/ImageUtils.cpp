@@ -88,7 +88,6 @@ namespace margelo::nitro::imagecompressor {
     }
 
     CompressedImageAsset ImageUtils::compressImage(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
-        // Parse options with defaults
         auto opts = options.value_or(
             CompressionOptions(
                 std::optional<double>(0.8),
@@ -98,24 +97,21 @@ namespace margelo::nitro::imagecompressor {
             )
         );
         
-        // Process image
         std::string path = stripFilePrefix(image.uri);
         cv::Mat img = loadImage(path);
         img = resizeImage(img, opts.maxWidth, opts.maxHeight);
         
-        // Get compression settings
         double quality = opts.quality.value_or(0.8);
         std::string format = opts.outputFormat.value_or("jpg");
         auto [compression_params, extension] = getCompressionParams(quality, format);
         
-        // Save compressed image
+        // Save the compressed image
         auto outputPath = generateTempPath(path, extension);
         
         if (!cv::imwrite(outputPath.string(), img, compression_params)) {
             throw std::runtime_error("Failed to compress and save image");
         }
         
-        // Create result
         uintmax_t compressedSize = std::filesystem::file_size(outputPath);
         return CompressedImageAsset(outputPath, img.cols, img.rows, formatFileSize(compressedSize));
     }
