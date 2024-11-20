@@ -90,13 +90,13 @@ namespace margelo::nitro::imagecompressor {
     CompressedImageAsset ImageUtils::compressImage(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
         // Parse options with defaults
         auto opts = options.value_or(
-                                     CompressionOptions(
-                                                        std::optional<double>(0.8),
-                                                        std::nullopt,
-                                                        std::nullopt,
-                                                        std::optional<std::string>("jpg")
-                                                        )
-                                     );
+            CompressionOptions(
+                std::optional<double>(0.8),
+                std::nullopt,
+                std::nullopt,
+                std::optional<std::string>("jpg")
+            )
+        );
         
         // Process image
         std::string path = stripFilePrefix(image.uri);

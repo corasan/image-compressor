@@ -18,7 +18,6 @@ namespace margelo::nitro::imagecompressor {
         static std::string stripFilePrefix(const std::string& path);
         static std::filesystem::path getUniquePath(const std::filesystem::path& path);
         static std::string formatFileSize(uintmax_t bytes);
-        static bool saveImageToPhotos(const std::string& path);
         
     private:
         // Internal compression helpers
