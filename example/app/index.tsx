@@ -32,7 +32,7 @@ export default function App() {
     }
 
     const startTime = performance.now()
-    const compressedImg = ImageCompressor.compress(img, { quality: 0.2 })
+    const compressedImg = ImageCompressor.compress(img, { quality: 1, maxWidth: 800 })
     const endTime = performance.now()
     setTimeToCompress(endTime - startTime)
     setCompressedImage(compressedImg)
