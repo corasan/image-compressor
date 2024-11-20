@@ -17,7 +17,7 @@ namespace margelo::nitro::imagecompressor {
         return result;
     }
 
-    void HybridImageCompressor::saveImage(const std::string& uri) {
+    bool HybridImageCompressor::saveImage(const std::string& uri) {
         if (tmpImagePath.empty()) {
             throw std::runtime_error("No compressed image available. Call compress() first.");
         }
@@ -26,10 +26,7 @@ namespace margelo::nitro::imagecompressor {
             throw std::runtime_error("Compressed image file no longer exists at path: " + tmpImagePath.string());
         }
         
-        bool success = ImageUtils::saveImageToPhotos(tmpImagePath.string());
-        if (!success) {
-            throw std::runtime_error("Failed to save image to Photos Library. Check logs for details.");
-        }
+        return ImageCompressor::saveImageToPhotos(tmpImagePath.string());
     }
 
 } // namespace margelo::nitro::imagecompressor

@@ -58,7 +58,7 @@ namespace margelo::nitro::imagecompressor {
     public:
       // Methods
       virtual CompressedImageAsset compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) = 0;
-      virtual void saveImage(const std::string& uri) = 0;
+      virtual bool saveImage(const std::string& uri) = 0;
 
     protected:
       // Hybrid Setup
