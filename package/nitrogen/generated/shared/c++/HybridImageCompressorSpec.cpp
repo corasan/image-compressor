@@ -15,6 +15,7 @@ namespace margelo::nitro::imagecompressor {
     // load custom methods/properties
     registerHybrids(this, [](Prototype& prototype) {
       prototype.registerHybridMethod("compress", &HybridImageCompressorSpec::compress);
+      prototype.registerHybridMethod("saveImage", &HybridImageCompressorSpec::saveImage);
     });
   }
 
