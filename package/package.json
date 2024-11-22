@@ -1,6 +1,6 @@
 {
   "name": "@corasan/image-compressor",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A template for Nitro Modules.",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
