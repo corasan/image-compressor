@@ -15,6 +15,7 @@
     "!**/__mocks__",
     "react-native.config.js",
     "nitrogen",
+    "cpp",
     "android/build.gradle",
     "android/gradle.properties",
     "android/CMakeLists.txt",
