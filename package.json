@@ -74,6 +74,10 @@
               "section": "🛠️ Dependency Upgrades"
             },
             {
+              "type": "perf",
+              "section": "🏎️ Performance Improvements"
+            },
+            {
               "type": "docs",
               "section": "📚 Documentation"
             }
