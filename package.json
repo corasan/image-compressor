@@ -1,6 +1,6 @@
 {
   "name": "nitro-image-compressor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Henry Paulino <me@henrypl.com> (https://github.com/corasan)",
   "packageManager": "bun@1.1.34",
   "main": "lib/index",
@@ -26,7 +26,10 @@
   },
   "release-it": {
     "npm": {
-      "publish": false
+      "publish": false,
+      "versionArgs": [
+        "--allow-same-version"
+      ]
     },
     "github": {
       "release": true
