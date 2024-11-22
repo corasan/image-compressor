@@ -25,6 +25,14 @@ Pod::Spec.new do |s|
 
   s.vendored_frameworks = "ios/opencv2.xcframework"
 
+  s.xcconfig = {
+    'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/../../node_modules/@corasan/image-compressor/ios"',
+    'HEADER_SEARCH_PATHS' => [
+      '"$(PODS_ROOT)/../../node_modules/@corasan/image-compressor/ios/opencv2.xcframework/ios-arm64/opencv2.framework/Versions/A/Headers"',
+      '"$(PODS_ROOT)/../../node_modules/@corasan/image-compressor/ios/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers"'
+    ].join(' ')
+  }
+
   load 'nitrogen/generated/ios/ImageCompressor+autolinking.rb'
   add_nitrogen_files(s)
 
