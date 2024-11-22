@@ -4,15 +4,15 @@
   ],
   "compilerOptions": {
     "composite": true,
-    "outDir": "lib",
     "rootDir": "src",
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["esnext"],
-    "module": "esnext",
+    "jsx": "react-jsx",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "target": "ESNext",
     "moduleResolution": "node",
     "noEmit": false,
     "noFallthroughCasesInSwitch": true,
@@ -25,7 +25,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
-    "verbatimModuleSyntax": true
+    "allowImportingTsExtensions": true,
+    "noPropertyAccessFromIndexSignature": false
   }
 }
