@@ -10,9 +10,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",
-    "lib": ["ESNext"],
-    "module": "ESNext",
-    "target": "ESNext",
+    "lib": ["esnext"],
+    "module": "esnext",
+    "target": "esnext",
     "moduleResolution": "node",
     "noEmit": false,
     "noFallthroughCasesInSwitch": true,
@@ -24,8 +24,6 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "allowImportingTsExtensions": true,
-    "noPropertyAccessFromIndexSignature": false
+    "strict": true
   }
 }
