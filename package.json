@@ -32,7 +32,8 @@
       "release": true
     },
     "hooks": {
-      "after:bump": "bun specs"
+      "after:bump": "bun specs",
+      "before:release": "bun build"
     },
     "git": {
       "commitMessage": "chore: release ${version}",
