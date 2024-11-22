@@ -1,45 +1,45 @@
 {
-	"name": "@corasan/image-compressor-example",
-	"version": "1.0.0",
-	"main": "expo-router/entry",
-	"scripts": {
-		"start": "expo start",
-		"android": "expo run:android",
-		"ios": "expo run:ios",
-		"web": "expo start --web"
-	},
-	"dependencies": {
-		"@corasan/image-compressor": "*",
-		"expo": "^52.0",
-		"expo-constants": "~17.0.2",
-		"expo-dev-client": "~5.0.2",
-		"expo-image": "~2.0.0",
-		"expo-image-picker": "~16.0.2",
-		"expo-linking": "~7.0.2",
-		"expo-media-library": "~17.0.2",
-		"expo-router": "~4.0.2",
-		"expo-splash-screen": "~0.29.7",
-		"expo-status-bar": "~2.0.0",
-		"react": "18.3.1",
-		"react-dom": "18.3.1",
-		"react-native": "0.76.2",
-		"react-native-gesture-handler": "~2.20.2",
-		"react-native-nitro-modules": "^0.16.2",
-		"react-native-safe-area-context": "4.12.0",
-		"react-native-screens": "~4.1.0",
-		"react-native-web": "~0.19.6"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.20.0"
-	},
-	"private": true,
-	"expo": {
-		"autolinking": {
-			"nativeModulesDir": "../node_modules",
-			"searchPaths": [
-				"../node_modules",
-				"..packages"
-			]
-		}
-	}
+ "name": "@corasan/image-compressor-example",
+ "version": "0.0.0",
+ "main": "expo-router/entry",
+ "scripts": {
+  "start": "expo start",
+  "android": "expo run:android",
+  "ios": "expo run:ios",
+  "web": "expo start --web"
+ },
+ "dependencies": {
+  "@corasan/image-compressor": "*",
+  "expo": "^52.0",
+  "expo-constants": "~17.0.2",
+  "expo-dev-client": "~5.0.2",
+  "expo-image": "~2.0.0",
+  "expo-image-picker": "~16.0.2",
+  "expo-linking": "~7.0.2",
+  "expo-media-library": "~17.0.2",
+  "expo-router": "~4.0.2",
+  "expo-splash-screen": "~0.29.7",
+  "expo-status-bar": "~2.0.0",
+  "react": "18.3.1",
+  "react-dom": "18.3.1",
+  "react-native": "0.76.2",
+  "react-native-gesture-handler": "~2.20.2",
+  "react-native-nitro-modules": "^0.16.2",
+  "react-native-safe-area-context": "4.12.0",
+  "react-native-screens": "~4.1.0",
+  "react-native-web": "~0.19.6"
+ },
+ "devDependencies": {
+  "@babel/core": "^7.20.0"
+ },
+ "private": true,
+ "expo": {
+  "autolinking": {
+   "nativeModulesDir": "../node_modules",
+   "searchPaths": [
+    "../node_modules",
+    "..packages"
+   ]
+  }
+ }
 }
