@@ -30,7 +30,7 @@
 		"typecheck": "tsc --noEmit",
 		"clean": "rm -rf android/build node_modules/**/android/build lib",
 		"typescript": "tsc --noEmit false",
-    "specs": "bun run --filter=\"**\" typescript && bun nitro-codegen --logLevel=\"debug\""
+		"specs": "bun run --filter=\"**\" typescript && bun nitro-codegen --logLevel=\"debug\""
 	},
 	"keywords": ["react-native", "nitro"],
 	"repository": {
@@ -53,6 +53,7 @@
 		"prettier": "^3.3.3",
 		"react": "18.3.1",
 		"react-native": "0.76.1",
+		"react-native-builder-bob": "^0.33.1",
 		"react-native-nitro-modules": "*"
 	},
 	"peerDependencies": {
