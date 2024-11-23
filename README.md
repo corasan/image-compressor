@@ -4,7 +4,8 @@
 
 ## ⚠️ WORK IN PROGRESS ⚠️
 
-[!WARNING] This package is still in development and very much an experiment. It's not ready for production use yet. Has only been tested on iOS using Expo.
+> [!WARNING]
+> This package is still in development and very much an experiment. It's not ready for production use yet. Has only been tested on iOS using Expo.
 
 ## Installation
 
