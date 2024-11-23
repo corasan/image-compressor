@@ -13,6 +13,7 @@
     "nitrogen",
     "cpp",
     "ios",
+    "plugin",
     "!**/__tests__",
     "!**/__fixtures__",
     "!**/__mocks__",
