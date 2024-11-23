@@ -33,7 +33,8 @@
       ]
     },
     "github": {
-      "release": true
+      "release": true,
+      "releaseName": "${version}"
     },
     "hooks": {
       "after:bump": "bun specs",
