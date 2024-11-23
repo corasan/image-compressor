@@ -13,25 +13,30 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => min_ios_version_supported, :visionos => 1.0 }
   s.source       = { :git => "https://github.com/corasan/nitro-image-compressor.git", :tag => "#{s.version}" }
 
+  # Separate source files by type
   s.source_files = [
-    # Implementation (Swift)
     "ios/**/*.{swift}",
-    # Autolinking/Registration (Objective-C++)
     "ios/**/*.{m,mm}",
-    # Implementation (C++ objects)
+    "ios/**/*.{h,hpp}",
     "cpp/**/*.{hpp,cpp}",
     "ios/opencv2.xcframework/**/*.{h,hpp}"
   ]
 
+  # Add OpenCV framework
   s.vendored_frameworks = "ios/opencv2.xcframework"
 
+  # Add framework header search paths
   s.xcconfig = {
-    'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/../../node_modules/@corasan/image-compressor/ios"',
     'HEADER_SEARCH_PATHS' => [
-      '"$(PODS_ROOT)/../../node_modules/@corasan/image-compressor/ios/opencv2.xcframework/ios-arm64/opencv2.framework/Versions/A/Headers"',
-      '"$(PODS_ROOT)/../../node_modules/@corasan/image-compressor/ios/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Versions/A/Headers"'
-    ].join(' ')
+      '"$(inherited)"',
+      '"${PODS_ROOT}/../../node_modules/@corasan/image-compressor/ios/opencv2.xcframework/ios-arm64/opencv2.framework/Headers"',
+      '"${PODS_ROOT}/../../node_modules/@corasan/image-compressor/ios/opencv2.xcframework/ios-arm64_x86_64-simulator/opencv2.framework/Headers"'
+      ].join(' '),
+    'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/../../node_modules/@corasan/image-compressor/ios"'
   }
+
+  # Preserve OpenCV framework headers
+  s.preserve_paths = "ios/opencv2.xcframework/**"
 
   load 'nitrogen/generated/ios/ImageCompressor+autolinking.rb'
   add_nitrogen_files(s)
