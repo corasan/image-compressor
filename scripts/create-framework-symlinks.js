@@ -50,13 +50,13 @@ function createSymlinks(frameworkPath) {
 }
 
 // Path to xcframework
-const xcframeworkPath = path.join(__dirname, '..', 'ios', 'opencv2.xcframework');
+const xcframeworkPath = path.join(__dirname, '..', 'package', 'ios', 'opencv2.xcframework');
 
 // Process both device and simulator frameworks
-['ios-arm64', 'ios-arm64-simulator'].forEach(arch => {
+['ios-arm64', 'ios-arm64_x86_64-simulator'].forEach(arch => {
   const frameworkPath = path.join(xcframeworkPath, arch, 'opencv2.framework');
   if (fs.existsSync(frameworkPath)) {
-    console.log(`Creating symlinks for ${arch}...`);
+    console.log(`Creating opencv2symlinks for ${arch}...`);
     createSymlinks(frameworkPath);
   } else {
     console.error(`Framework not found at ${frameworkPath}`);
