@@ -8,6 +8,7 @@
     },
     "plugins": [
       "expo-router",
+      "@corasan/image-compressor",
       [
         "expo-image-picker",
         {

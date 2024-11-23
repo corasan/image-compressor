@@ -52,6 +52,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@expo/config-plugins": "^9.0.10",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.3.4",
     "nitro-codegen": "*",

@@ -11,8 +11,7 @@
     "clean": "rm -rf package/tsconfig.tsbuildinfo package/node_modules package/lib",
     "specs": "cd package && bun specs && cd .. && cd example/ios && pod install && cd ../../",
     "build": "bun --cwd package build",
-    "release": "release-it",
-    "postinstall": "node ./scripts/create-framework-symlinks.js"
+    "release": "release-it"
   },
   "workspaces": [
     "package",
