@@ -1,5 +1,4 @@
 import { type CompressedImageAsset, ImageCompressor } from '@corasan/image-compressor'
-import { Image } from 'expo-image'
 import * as ImagePicker from 'expo-image-picker'
 import { useState } from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'

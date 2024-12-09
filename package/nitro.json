@@ -1,16 +1,16 @@
 {
-	"cxxNamespace": ["imagecompressor"],
-	"ios": {
-		"iosModuleName": "ImageCompressor"
-	},
-	"android": {
-		"androidNamespace": ["imagecompressor"],
-		"androidCxxLibName": "ImageCompressor"
-	},
-	"autolinking": {
-		"ImageCompressor": {
-			"cpp": "HybridImageCompressor"
-		}
-	},
-	"ignorePaths": ["node_modules"]
+  "cxxNamespace": ["imagecompressor"],
+  "ios": {
+    "iosModuleName": "ImageCompressor"
+  },
+  "android": {
+    "androidNamespace": ["imagecompressor"],
+    "androidCxxLibName": "ImageCompressor"
+  },
+  "autolinking": {
+    "ImageCompressor": {
+      "cpp": "HybridImageCompressor"
+    }
+  },
+  "ignorePaths": ["node_modules"]
 }

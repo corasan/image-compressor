@@ -1,6 +1,6 @@
 #include <jni.h>
-#include "<<androidCxxLibName>>OnLoad.hpp"
+#include "ImageCompressorOnLoad.hpp"
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void*) {
-  return margelo::nitro::<<androidNamespace>>::initialize(vm);
+  return margelo::nitro::imagecompressor::initialize(vm);
 }
