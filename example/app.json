@@ -3,8 +3,13 @@
     "scheme": "example",
     "name": "image-compressor-example",
     "slug": "image-compressor-example",
+    "icon": "./assets/icon.png",
     "ios": {
       "bundleIdentifier": "com.example.image-compressor"
+    },
+    "splash": {
+      "image": "./assets/icon.png",
+      "backgroundColor": "#232323"
     },
     "plugins": [
       "expo-router",
@@ -22,12 +27,18 @@
           "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
           "isAccessMediaLocationEnabled": true
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "16.0"
+          }
+        }
       ]
     ],
     "android": {
-      "permissions": [
-        "android.permission.RECORD_AUDIO"
-      ],
+      "permissions": ["android.permission.RECORD_AUDIO"],
       "package": "com.example.imagecompressor"
     }
   }
