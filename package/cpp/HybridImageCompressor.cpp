@@ -20,15 +20,18 @@ namespace margelo::nitro::imagecompressor {
     }
 
     bool HybridImageCompressor::saveImage(const std::string& uri) {
-        // if (tmpImagePath.empty()) {
-        //     throw std::runtime_error("No compressed image available. Call compress() first.");
-        // }
+        #ifdef __APPLE__
+        if (tmpImagePath.empty()) {
+            throw std::runtime_error("No compressed image available. Call compress() first.");
+        }
         
-        // if (!std::filesystem::exists(tmpImagePath)) {
-        //     throw std::runtime_error("Compressed image file no longer exists at path: " + tmpImagePath.string());
-        // }
+        if (!std::filesystem::exists(tmpImagePath)) {
+            throw std::runtime_error("Compressed image file no longer exists at path: " + tmpImagePath.string());
+        }
         
-        // return ImageCompressor::saveImageToPhotos(tmpImagePath.string());
-        return true;
+        return ImageCompressor::saveImageToPhotos(tmpImagePath.string());
+        #else
+        return false;
+        #endif
     }
 } // namespace margelo::nitro::imagecompressor
