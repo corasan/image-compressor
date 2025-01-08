@@ -102,3 +102,5 @@ yarn-error.*
 
 OpenCv-android-sdk/
 o4a
+
+compile_flags.txt
