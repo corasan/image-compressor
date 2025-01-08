@@ -128,3 +128,11 @@ dependencies {
   // Add a dependency on NitroModules
   implementation project(":react-native-nitro-modules")
 }
+
+if (isNewArchitectureEnabled()) {
+  react {
+    jsRootDir = file("../src/")
+    libraryName = "ImageCompressor"
+    codegenJavaPackageName = "com.margelo.nitro.imagecompressor"
+  }
+}
