@@ -99,3 +99,6 @@ lib/
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+
+OpenCv-android-sdk/
+o4a
