@@ -31,7 +31,7 @@ export default function App() {
     }
 
     const startTime = performance.now()
-    const compressedImg = ImageCompressor.compress(img, { quality: 1, maxWidth: 800 })
+    const compressedImg = ImageCompressor.compress(img, { quality: 0.5, maxWidth: 800 })
     const endTime = performance.now()
     setTimeToCompress(endTime - startTime)
     setCompressedImage(compressedImg)
@@ -64,18 +64,18 @@ export default function App() {
         <View style={styles.separator} />
 
         {!originalImg ? null : (
-          <>
+          <View>
             <Text style={styles.title}>Original Image</Text>
             <ImageDetails image={originalImg} />
-          </>
+          </View>
         )}
         <View style={styles.separator} />
 
         {!compressedImage ? null : (
-          <>
+          <View>
             <Text style={styles.title}>Compressed Image</Text>
             <ImageDetails image={compressedImage} />
-          </>
+          </View>
         )}
       </View>
     </ScrollView>
