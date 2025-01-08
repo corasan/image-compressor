@@ -1,9 +1,7 @@
 #include "HybridImageCompressor.hpp"
 #include "ImageUtils.hpp"
 #include <filesystem>
-#include <iomanip>
 #include <opencv2/opencv.hpp>
-#include <sstream>
 #include <stdexcept>
 #ifdef __APPLE__
 #include "ImageCompressor-Swift.h"
