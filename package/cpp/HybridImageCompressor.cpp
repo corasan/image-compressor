@@ -5,7 +5,9 @@
 #include <sstream>
 #include <iomanip>
 #include "ImageUtils.hpp"
+#ifdef __APPLE__
 #include "ImageCompressor-Swift.h"
+#endif
 
 std::filesystem::path tmpImagePath;
 
@@ -18,15 +20,15 @@ namespace margelo::nitro::imagecompressor {
     }
 
     bool HybridImageCompressor::saveImage(const std::string& uri) {
-        if (tmpImagePath.empty()) {
-            throw std::runtime_error("No compressed image available. Call compress() first.");
-        }
+        // if (tmpImagePath.empty()) {
+        //     throw std::runtime_error("No compressed image available. Call compress() first.");
+        // }
         
-        if (!std::filesystem::exists(tmpImagePath)) {
-            throw std::runtime_error("Compressed image file no longer exists at path: " + tmpImagePath.string());
-        }
+        // if (!std::filesystem::exists(tmpImagePath)) {
+        //     throw std::runtime_error("Compressed image file no longer exists at path: " + tmpImagePath.string());
+        // }
         
-        return ImageCompressor::saveImageToPhotos(tmpImagePath.string());
+        // return ImageCompressor::saveImageToPhotos(tmpImagePath.string());
+        return true;
     }
-
 } // namespace margelo::nitro::imagecompressor

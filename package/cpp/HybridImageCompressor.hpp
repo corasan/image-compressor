@@ -2,7 +2,6 @@
 
 #include <string>
 #include "HybridImageCompressorSpec.hpp"
-#include <future>
 
 namespace margelo::nitro::imagecompressor {
     class HybridImageCompressor: public HybridImageCompressorSpec {
