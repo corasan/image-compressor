@@ -10,8 +10,9 @@ type ImageDetailsProps = {
 
 export function ImageDetails({ image }: ImageDetailsProps) {
   const saveImage = async () => {
-    const filePath = image.uri.replace('file://', '')
-    const wasSaved = ImageCompressor.saveImage(filePath)
+    if (!('save' in image)) return
+
+    const wasSaved = await image.save()
     if (wasSaved) {
       Alert.alert('Image saved successfully')
     }
