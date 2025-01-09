@@ -27,6 +27,7 @@ target_sources(
   # Autolinking Setup
   ../nitrogen/generated/android/ImageCompressorOnLoad.cpp
   # Shared Nitrogen C++ sources
+  ../nitrogen/generated/shared/c++/HybridCompressedImageAssetSpec.cpp
   ../nitrogen/generated/shared/c++/HybridImageCompressorSpec.cpp
   # Android-specific Nitrogen C++ sources
   
