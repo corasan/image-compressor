@@ -10,7 +10,5 @@ namespace margelo::nitro::imagecompressor {
 
     std::shared_ptr<margelo::nitro::imagecompressor::HybridCompressedImageAssetSpec>
     compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) override;
-
-    bool saveImage(const std::string& uri) override;
   };
 } // namespace margelo::nitro::imagecompressor

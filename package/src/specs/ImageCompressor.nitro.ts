@@ -25,5 +25,4 @@ export interface CompressedImageAsset extends HybridObject<{ ios: 'c++'; android
 
 export interface ImageCompressor extends HybridObject<{ ios: 'c++'; android: 'c++' }> {
   compress(image: ImageAsset, options?: CompressionOptions): CompressedImageAsset
-  saveImage(uri: string): boolean
 }

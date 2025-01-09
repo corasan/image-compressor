@@ -25,7 +25,6 @@ namespace margelo::nitro::imagecompressor { struct CompressionOptions; }
 #include "ImageAsset.hpp"
 #include <optional>
 #include "CompressionOptions.hpp"
-#include <string>
 
 namespace margelo::nitro::imagecompressor {
 
@@ -59,7 +58,6 @@ namespace margelo::nitro::imagecompressor {
     public:
       // Methods
       virtual std::shared_ptr<margelo::nitro::imagecompressor::HybridCompressedImageAssetSpec> compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) = 0;
-      virtual bool saveImage(const std::string& uri) = 0;
 
     protected:
       // Hybrid Setup
