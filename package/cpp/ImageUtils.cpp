@@ -103,7 +103,7 @@ namespace margelo::nitro::imagecompressor {
     }
 
     uintmax_t compressedSize = std::filesystem::file_size(outputPath);
-    return CompressedImageAsset(outputPath, img.cols, img.rows, formatFileSize(compressedSize));
+    return CompressedImageAsset("file://" + outputPath.string(), img.cols, img.rows, formatFileSize(compressedSize));
   }
 
 } // namespace margelo::nitro::imagecompressor
