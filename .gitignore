@@ -100,7 +100,5 @@ npm-debug.*
 yarn-debug.*
 yarn-error.*
 
-OpenCv-android-sdk/
+OpenCV-android-sdk/
 o4a
-
-compile_flags.txt
