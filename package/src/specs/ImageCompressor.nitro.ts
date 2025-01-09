@@ -14,11 +14,13 @@ export interface ImageAsset {
   fileSize: number
 }
 
-export interface CompressedImageAsset {
+export interface CompressedImageAsset extends HybridObject<{ ios: 'c++'; android: 'c++' }> {
   uri: string
   width: number
   height: number
   fileSize: string
+
+  save(): Promise<boolean>
 }
 
 export interface ImageCompressor extends HybridObject<{ ios: 'c++'; android: 'c++' }> {
