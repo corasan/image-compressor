@@ -1,7 +1,7 @@
 #pragma once
 
-#include "CompressedImageAsset.hpp"
 #include "CompressionOptions.hpp"
+#include "HybridCompressedImageAsset.hpp"
 #include "ImageAsset.hpp"
 #include <filesystem>
 #include <opencv2/opencv.hpp>
@@ -12,8 +12,8 @@ namespace margelo::nitro::imagecompressor {
   class ImageUtils {
   public:
     // Main compression function
-    static CompressedImageAsset compressImage(const ImageAsset& image,
-                                              const std::optional<CompressionOptions>& options);
+    static std::shared_ptr<HybridCompressedImageAsset> compressImage(const ImageAsset& image,
+                                                                     const std::optional<CompressionOptions>& options);
 
     // Helper functions
     static std::string stripFilePrefix(const std::string& path);

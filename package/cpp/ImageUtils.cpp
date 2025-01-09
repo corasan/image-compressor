@@ -82,8 +82,8 @@ namespace margelo::nitro::imagecompressor {
     return ss.str();
   }
 
-  CompressedImageAsset ImageUtils::compressImage(const ImageAsset& image,
-                                                 const std::optional<CompressionOptions>& options) {
+  std::shared_ptr<HybridCompressedImageAsset>
+  ImageUtils::compressImage(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
     auto opts = options.value_or(
         CompressionOptions(std::optional<double>(0.8), std::nullopt, std::nullopt, std::optional<std::string>("jpg")));
 
@@ -102,8 +102,12 @@ namespace margelo::nitro::imagecompressor {
       throw std::runtime_error("Failed to compress and save image");
     }
 
+    // uintmax_t compressedSize = std::filesystem::file_size(outputPath);
+    auto compressedAsset = std::make_shared<HybridCompressedImageAsset>();
     uintmax_t compressedSize = std::filesystem::file_size(outputPath);
-    return CompressedImageAsset("file://" + outputPath.string(), img.cols, img.rows, formatFileSize(compressedSize));
+    compressedAsset->initialize("file://" + outputPath.string(), static_cast<double>(img.cols),
+                                static_cast<double>(img.rows), formatFileSize(compressedSize));
+    return compressedAsset;
   }
 
 } // namespace margelo::nitro::imagecompressor

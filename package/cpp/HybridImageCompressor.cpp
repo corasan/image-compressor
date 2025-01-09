@@ -1,6 +1,6 @@
 #include "HybridImageCompressor.hpp"
-#include "CompressedImageAsset.hpp"
 #include "CompressionOptions.hpp"
+#include "HybridCompressedImageAsset.hpp"
 #include "ImageUtils.hpp"
 #include <filesystem>
 #include <opencv2/opencv.hpp>
@@ -16,10 +16,10 @@ std::filesystem::path tmpImagePath;
 
 namespace margelo::nitro::imagecompressor {
 
-  CompressedImageAsset HybridImageCompressor::compress(const ImageAsset& image,
-                                                       const std::optional<CompressionOptions>& options) {
+  std::shared_ptr<margelo::nitro::imagecompressor::HybridCompressedImageAssetSpec>
+  HybridImageCompressor::compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
     auto result = ImageUtils::compressImage(image, options);
-    tmpImagePath = result.uri; // Store the path for later use
+    tmpImagePath = result.get()->getUri(); // Store the path for later use
     return result;
   }
 
