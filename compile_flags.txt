@@ -1,12 +1,12 @@
 -std=c++20
 -Wall
 -Wextra
--I/usr/include
 -I/usr/local/include
 -I.
 -I./package/
 -I./package/cpp/
 -I./package/ios/
+-I./package/android/src/main/cpp
 -I./package/nitrogen/generated/shared/c++
 -I./node_modules/react-native-nitro-modules/ios
 -I./node_modules/react-native-nitro-modules/android
@@ -20,3 +20,4 @@
 -I./node_modules/react-native-nitro-modules/cpp/templates
 -I./node_modules/react-native-nitro-modules/cpp/threading
 -I./node_modules/react-native-nitro-modules/cpp/utils
+-I/Users/henry/Library/Android/sdk/ndk
