@@ -39,7 +39,7 @@ export default function App() {
 
   if (compressedImage) {
     console.log(
-      'It tooks',
+      'It took',
       timeToCompress.toFixed(2),
       'ms to compress the image. From',
       formatBytes(originalImg.fileSize),
