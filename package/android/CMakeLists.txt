@@ -17,6 +17,7 @@ find_package(OpenCV REQUIRED)
 # Define C++ library and add all sources
 add_library(${PACKAGE_NAME} SHARED
         src/main/cpp/cpp-adapter.cpp
+        src/main/cpp/ImageCompressor_jni.cpp
         ../cpp/HybridImageCompressor.cpp
         ../cpp/HybridCompressedImageAsset.cpp
         ../cpp/ImageUtils.cpp
