@@ -3,7 +3,7 @@ BasedOnStyle: llvm
 
 # Indentation
 IndentWidth: 2
-ColumnLimit: 120
+ColumnLimit: 100
 
 # Includes
 SortIncludes: CaseSensitive
