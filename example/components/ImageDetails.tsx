@@ -1,4 +1,4 @@
-import { type CompressedImageAsset, ImageCompressor } from '@corasan/image-compressor'
+import type { CompressedImageAsset } from '@corasan/image-compressor'
 import { Image } from 'expo-image'
 import type * as ImagePicker from 'expo-image-picker'
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
@@ -10,17 +10,18 @@ type ImageDetailsProps = {
 
 export function ImageDetails({ image }: ImageDetailsProps) {
   const saveImage = async () => {
-    const filePath = image.uri.replace('file://', '')
-    console.log(filePath)
-    const wasSaved = ImageCompressor.saveImage(filePath)
+    if (!('save' in image)) return
+
+    const wasSaved = await image.save()
     if (wasSaved) {
       Alert.alert('Image saved successfully')
     }
   }
+
   return (
     <View style={styles.container}>
       <Image
-        source={{ uri: image.uri }}
+        source={image.uri}
         style={styles.image}
         contentFit="contain"
         transition={200}
@@ -63,8 +64,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
   },
   image: {
-    height: 220,
-    width: '100%',
+    height: 200,
   },
   buttonText: {
     fontWeight: 'bold',

@@ -1,0 +1,21 @@
+
+rootProject.name = 'opencv_samples'
+
+gradle.ext {
+    // possible options: 'maven_central', 'maven_local', 'sdk_path'
+    opencv_source = 'sdk_path'
+}
+
+if (gradle.opencv_source == 'maven_local') {
+    gradle.ext {
+        opencv_maven_path = '<path_to_maven_repo>'
+    }
+}
+
+if (gradle.opencv_source == 'sdk_path') {
+    def opencvsdk = '../'
+    //def opencvsdk='/<path to OpenCV-android-sdk>'
+    //println opencvsdk
+    include ':opencv'
+    project(':opencv').projectDir = new File(opencvsdk + '/sdk')
+}

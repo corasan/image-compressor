@@ -1,15 +1,14 @@
 #pragma once
 
-#include <string>
 #include "HybridImageCompressorSpec.hpp"
-#include <future>
+#include <string>
 
 namespace margelo::nitro::imagecompressor {
-    class HybridImageCompressor: public HybridImageCompressorSpec {
-    public:
-        HybridImageCompressor(): HybridObject(TAG) {}
+  class HybridImageCompressor : public HybridImageCompressorSpec {
+  public:
+    HybridImageCompressor() : HybridObject(TAG) {}
 
-        CompressedImageAsset compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) override;
-        bool saveImage(const std::string& uri) override;
-    };
+    std::shared_ptr<margelo::nitro::imagecompressor::HybridCompressedImageAssetSpec>
+    compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) override;
+  };
 } // namespace margelo::nitro::imagecompressor
