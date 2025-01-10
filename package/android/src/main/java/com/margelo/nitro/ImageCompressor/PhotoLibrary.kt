@@ -16,8 +16,8 @@ import android.app.Activity
 object PhotoLibrary {
     @JvmStatic
     fun saveImageToGallery(imagePath: String): Boolean {
-        Log.d("ImageCompressor","PhotoLibrary: Saving image to photos")
-        val imageFile = File(imagePath)
+        val cleanPath = imagePath.removePrefix("file:/")    
+        val imageFile = File(cleanPath)
         val context = NitroModules.applicationContext?: return false
         Log.d("ImageCompressor","PhotoLibrary: context was found")
 
@@ -56,6 +56,7 @@ object PhotoLibrary {
             // Clean up on failure
             resolver.delete(uri, null, null)
             Log.d("ImageCompressor","PhotoLibrary: Failed to save image")
+            Log.d("ImageCompressor","PhotoLibrary - Error: ${e.message}")
             false
         }
     }
@@ -85,8 +86,8 @@ object PhotoLibrary {
             Log.d("ImageCompressor","PhotoLibrary: Image saved successfully")
             return true
         } catch (e: Exception) {
-            Log.d("ImageCompressor", "Error in legacy save: ${e.message}")
-            Log.d("ImageCompressor","PhotoLibrary: Failed to save image")
+            Log.d("ImageCompressor", "PhotoLibrary - Error in legacy save: ${e.message}")
+            Log.d("ImageCompressor","PhotoLibrary - Error in legacy save: Failed to save image")
             return false
         }
     }
@@ -103,6 +104,15 @@ object PhotoLibrary {
 
     private fun getCurrentActivity(): Activity? {
         return MyContext.getCurrentActivity()
+    }
+
+    private fun stripFilePrefix(path: String): String {
+        return when {
+            path.startsWith("file:///") -> path.substring(7)
+            path.startsWith("file:/") -> path.substring(5)
+            path.startsWith("file:") -> path.substring(5)
+            else -> path
+        }
     }
 }
 

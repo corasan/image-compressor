@@ -25,7 +25,7 @@ namespace margelo::nitro::imagecompressor {
 #elif __has_include("ImageCompressor_jni.hpp")
     printf("ImageCompressor_jni.hpp\n");
     bool result = ImageCompressor_jni::saveImageToPhotos(_uri);
-    promise->resolve(false);
+    promise->resolve(result);
     return promise;
 #else
     promise->reject(std::make_exception_ptr(std::runtime_error(
