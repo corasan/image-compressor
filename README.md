@@ -54,5 +54,5 @@ const compressedImage = ImageCompressor.compress(image, {
   maxWidth: 800,
 })
 
-const wasSaved = await compressedImage.save(compressedImage.uri)
+const wasSaved = await compressedImage.save()
 ```
