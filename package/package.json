@@ -37,7 +37,14 @@
   },
   "keywords": [
     "react-native",
-    "nitro"
+    "nitro",
+    "expo",
+    "image",
+    "compression",
+    "compressor",
+    "image-compressor",
+    "react-native-image-compressor"
+
   ],
   "repository": {
     "type": "git",
