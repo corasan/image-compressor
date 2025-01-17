@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 public func saveImageToPhotos(_ imagePath: String) -> Bool {
-    var cleanPath = imagePath.replacingOccurrences(of: "file://", with: "")
+    let cleanPath = imagePath.replacingOccurrences(of: "file://", with: "")
     // check if file exists
     guard FileManager.default.fileExists(atPath: cleanPath) else {
         print("Image file does not exist at path: \(cleanPath)")
