@@ -53,7 +53,7 @@ export default function App() {
       contentContainerStyle={{ padding: 16, paddingTop: 60 }}
     >
       <View style={styles.container}>
-        <Text style={styles.title}>Welcome to Nitro compressor!</Text>
+        <Text style={styles.title}>Welcome to @corasan/image-compressor!</Text>
         <TouchableOpacity onPress={() => pickImage()}>
           <View style={styles.button}>
             <Text>Pick a photo</Text>
