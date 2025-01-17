@@ -9,12 +9,6 @@ public func saveImageToPhotos(_ imagePath: String) -> Bool {
         print("Image file does not exist at path: \(cleanPath)")
         return false
     }
-    
-    // check if image can be loaded
-    guard let image = UIImage(contentsOfFile: cleanPath) else {
-        print("Could not load image from path: \(cleanPath)")
-        return false
-    }
         
     var success = false
     let semaphore = DispatchSemaphore(value: 0)
@@ -61,23 +55,25 @@ public func saveImageToPhotos(_ imagePath: String) -> Bool {
     
     // save photos to library
     func saveToPhotos() {
-        PHPhotoLibrary.shared().performChanges({
-            let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
-            request.creationDate = Date()
-        }) { savedSuccess, error in
-            defer {
-                semaphore.signal()
-            }
-            
-            if savedSuccess {
-                success = true
-            } else {
-                if let error = error {
-                    if let underlying = (error as NSError).userInfo[NSUnderlyingErrorKey] as? Error {
-                        print("Underlying error: \(underlying)")
-                    }
+        if let data = try? Data(contentsOf: URL(fileURLWithPath: cleanPath)) {
+            PHPhotoLibrary.shared().performChanges({
+                let request = PHAssetCreationRequest.forAsset()
+                request.addResource(with: .photo, data: data, options: nil)
+            }) { savedSuccess, error in
+                defer {
+                    semaphore.signal()
+                }
+                
+                if savedSuccess {
+                    success = true
                 } else {
-                    print("Unknown error saving photo")
+                    if let error = error {
+                        if let underlying = (error as NSError).userInfo[NSUnderlyingErrorKey] as? Error {
+                            print("Underlying error: \(underlying)")
+                        }
+                    } else {
+                        print("Unknown error saving photo")
+                    }
                 }
             }
         }
