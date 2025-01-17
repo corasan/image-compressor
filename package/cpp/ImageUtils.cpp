@@ -20,6 +20,13 @@ namespace margelo::nitro::imagecompressor {
     return img;
   }
 
+  cv::Mat ImageUtils::preprocessImg(const cv::Mat& img) {
+    cv::Mat processed;
+
+    cv::bilateralFilter(img, processed, 9, 75, 75);
+    return processed;
+  }
+
   cv::Mat ImageUtils::resizeImage(const cv::Mat& img, const std::optional<double>& maxWidth,
                                   const std::optional<double>& maxHeight) {
     if (!maxWidth && !maxHeight) {
@@ -45,7 +52,8 @@ namespace margelo::nitro::imagecompressor {
     return img;
   }
 
-  std::pair<std::vector<int>, std::string> ImageUtils::getCompressionParams(double quality, const std::string& format) {
+  std::pair<std::vector<int>, std::string>
+  ImageUtils::getCompressionParams(double quality, const std::string& format) {
     std::vector<int> compression_params;
     std::string extension;
 
@@ -62,9 +70,11 @@ namespace margelo::nitro::imagecompressor {
     return {compression_params, extension};
   }
 
-  std::filesystem::path ImageUtils::generateTempPath(const std::string& originalPath, const std::string& extension) {
+  std::filesystem::path ImageUtils::generateTempPath(const std::string& originalPath,
+                                                     const std::string& extension) {
     return std::filesystem::temp_directory_path() /
-           std::filesystem::path(std::to_string(std::hash<std::string>{}(originalPath)) + extension);
+           std::filesystem::path(std::to_string(std::hash<std::string>{}(originalPath)) +
+                                 extension);
   }
 
   std::string ImageUtils::formatFileSize(uintmax_t bytes) {
@@ -83,13 +93,15 @@ namespace margelo::nitro::imagecompressor {
   }
 
   std::shared_ptr<HybridCompressedImageAsset>
-  ImageUtils::compressImage(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
-    auto opts = options.value_or(
-        CompressionOptions(std::optional<double>(0.8), std::nullopt, std::nullopt, std::optional<std::string>("jpg")));
+  ImageUtils::compressImage(const ImageAsset& image,
+                            const std::optional<CompressionOptions>& options) {
+    auto opts = options.value_or(CompressionOptions(
+        std::optional<double>(0.8), std::nullopt, std::nullopt, std::optional<std::string>("jpg")));
 
     std::string path = stripFilePrefix(image.uri);
     cv::Mat img = loadImage(path);
-    img = resizeImage(img, opts.maxWidth, opts.maxHeight);
+    cv::Mat resizedImg = resizeImage(img, opts.maxWidth, opts.maxHeight);
+    img = preprocessImg(resizedImg);
 
     double quality = opts.quality.value_or(0.8);
     std::string format = opts.outputFormat.value_or("jpg");

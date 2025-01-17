@@ -27,6 +27,8 @@ namespace margelo::nitro::imagecompressor {
                                                                          const std::string& format);
     static std::filesystem::path generateTempPath(const std::string& originalPath,
                                                   const std::string& extension);
+
+    static cv::Mat preprocessImg(const cv::Mat& img);
   };
 
 } // namespace margelo::nitro::imagecompressor
