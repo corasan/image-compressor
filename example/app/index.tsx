@@ -16,7 +16,6 @@ export default function App() {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ['images'],
       allowsEditing: false,
-      quality: 1,
     })
     const img = {
       uri: result.assets[0].uri,
