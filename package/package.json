@@ -1,6 +1,6 @@
 {
   "name": "@corasan/image-compressor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A template for Nitro Modules.",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -44,7 +44,6 @@
     "compressor",
     "image-compressor",
     "react-native-image-compressor"
-
   ],
   "repository": {
     "type": "git",
