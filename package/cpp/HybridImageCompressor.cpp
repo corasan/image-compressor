@@ -12,6 +12,7 @@ namespace margelo::nitro::imagecompressor {
 
   std::shared_ptr<margelo::nitro::imagecompressor::HybridCompressedImageAssetSpec>
   HybridImageCompressor::compress(const ImageAsset& image, const std::optional<CompressionOptions>& options) {
+    FileUtils::removeTmpFile(tmpImagePath);
     auto result = ImageUtils::compressImage(image, options);
     tmpImagePath = result.get()->getUri(); // Store the path for later use
     return result;
