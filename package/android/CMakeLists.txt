@@ -21,6 +21,7 @@ add_library(${PACKAGE_NAME} SHARED
         ../cpp/HybridImageCompressor.cpp
         ../cpp/HybridCompressedImageAsset.cpp
         ../cpp/ImageUtils.cpp
+        ../cpp/FileUtils.cpp
 )
 
 # Add Nitrogen specs :)
