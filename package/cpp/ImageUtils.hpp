@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <opencv2/opencv.hpp>
 #include <string>
+#include "FileUtils.hpp"
 
 namespace margelo::nitro::imagecompressor {
 
@@ -16,7 +17,6 @@ namespace margelo::nitro::imagecompressor {
     compressImage(const ImageAsset& image, const std::optional<CompressionOptions>& options);
 
     // Helper functions
-    static std::string stripFilePrefix(const std::string& path);
     static std::string formatFileSize(uintmax_t bytes);
 
   private:

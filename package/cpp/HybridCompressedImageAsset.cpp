@@ -8,6 +8,9 @@ namespace margelo::nitro::imagecompressor {
 
 #if __has_include("ImageCompressor-Swift.h")
     bool result = ImageCompressor::saveImageToPhotos(_uri);
+    if (result) {
+      FileUtils::removeTmpFile(_uri);
+    }
     promise->resolve(result);
     return promise;
 #else
@@ -17,9 +20,14 @@ namespace margelo::nitro::imagecompressor {
 
 #else // If on Android
     bool result = ImageCompressor_jni::saveImageToPhotos(_uri);
+    if (result) {
+      FileUtils::removeTmpFile(_uri);
+    }
     promise->resolve(result);
     return promise;
 
 #endif // end ifdef __APPLE__
   }
+
 } // namespace margelo::nitro::imagecompressor
+

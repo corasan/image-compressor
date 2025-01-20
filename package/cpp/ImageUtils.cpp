@@ -5,13 +5,6 @@
 
 namespace margelo::nitro::imagecompressor {
 
-  std::string ImageUtils::stripFilePrefix(const std::string& path) {
-    if (path.find("file://") == 0) {
-      return path.substr(7);
-    }
-    return path;
-  }
-
   cv::Mat ImageUtils::loadImage(const std::string& path) {
     cv::Mat img = cv::imread(path);
     if (img.empty()) {
@@ -98,7 +91,7 @@ namespace margelo::nitro::imagecompressor {
     auto opts = options.value_or(CompressionOptions(
         std::optional<double>(0.8), std::nullopt, std::nullopt, std::optional<std::string>("jpg")));
 
-    std::string path = stripFilePrefix(image.uri);
+    std::string path = FileUtils::stripFilePrefix(image.uri);
     cv::Mat img = loadImage(path);
     cv::Mat resizedImg = resizeImage(img, opts.maxWidth, opts.maxHeight);
     img = preprocessImg(resizedImg);
