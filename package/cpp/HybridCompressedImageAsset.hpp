@@ -3,6 +3,8 @@
 
 #include "HybridCompressedImageAssetSpec.hpp"
 #include <string>
+#include <filesystem>
+#include "FileUtils.hpp"
 
 #ifdef __APPLE__ // If on iOS
 #if __has_include("ImageCompressor-Swift.h")
