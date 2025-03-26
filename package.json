@@ -1,6 +1,6 @@
 {
   "name": "nitro-image-compressor",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Henry Paulino <me@henrypl.com> (https://github.com/corasan)",
   "packageManager": "bun@1.1.34",
   "main": "lib/index",
@@ -13,10 +13,7 @@
     "build": "bun --cwd package build",
     "release": "release-it"
   },
-  "workspaces": [
-    "package",
-    "example"
-  ],
+  "workspaces": ["package", "example"],
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@release-it-plugins/workspaces": "^4.2.0",
@@ -27,9 +24,7 @@
   "release-it": {
     "npm": {
       "publish": false,
-      "versionArgs": [
-        "--allow-same-version"
-      ]
+      "versionArgs": ["--allow-same-version"]
     },
     "github": {
       "release": true,
