@@ -27,7 +27,7 @@
     "README.md"
   ],
   "scripts": {
-    "postinstall": "tsc || exit 0;",
+    "postinstall": "tsc --noEmit || exit 0;",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf android/build node_modules/**/android/build lib",
     "typescript": "tsc --noEmit false",
@@ -116,8 +116,5 @@
       ]
     ]
   },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ]
+  "eslintIgnore": ["node_modules/", "lib/"]
 }

@@ -1,2 +1,12 @@
-module.exports = require('./plugin/withOpenCVFramework');
-module.exports = require('./plugin/withIosDeploymentTarget');
+const {
+  withPlugins,
+} = require("@expo/config-plugins");
+
+const withMyConfigPlugins = (config) => {
+  return withPlugins(config, [
+    require('./plugin/withOpenCVFramework'),
+    require('./plugin/withIosDeploymentTarget'),
+  ]);
+};
+
+module.exports = withMyConfigPlugins;
