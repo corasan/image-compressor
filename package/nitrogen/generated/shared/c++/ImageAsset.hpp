@@ -35,6 +35,7 @@ namespace margelo::nitro::imagecompressor {
     double fileSize     SWIFT_PRIVATE;
 
   public:
+    ImageAsset() = default;
     explicit ImageAsset(std::string uri, double width, double height, double fileSize): uri(uri), width(width), height(height), fileSize(fileSize) {}
   };
 
@@ -46,7 +47,7 @@ namespace margelo::nitro {
 
   // C++ ImageAsset <> JS ImageAsset (object)
   template <>
-  struct JSIConverter<ImageAsset> {
+  struct JSIConverter<ImageAsset> final {
     static inline ImageAsset fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
       jsi::Object obj = arg.asObject(runtime);
       return ImageAsset(

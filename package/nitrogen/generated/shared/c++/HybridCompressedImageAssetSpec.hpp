@@ -41,7 +41,7 @@ namespace margelo::nitro::imagecompressor {
       explicit HybridCompressedImageAssetSpec(): HybridObject(TAG) { }
 
       // Destructor
-      virtual ~HybridCompressedImageAssetSpec() { }
+      ~HybridCompressedImageAssetSpec() override = default;
 
     public:
       // Properties
