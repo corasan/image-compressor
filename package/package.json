@@ -27,7 +27,7 @@
     "README.md"
   ],
   "scripts": {
-    "postinstall": "tsc --noEmit || exit 0;",
+    "postinstall": "tsc || exit 0;",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf android/build node_modules/**/android/build lib",
     "typescript": "tsc",
