@@ -35,7 +35,7 @@ function createSymlinks(frameworkPath) {
 
   // Move Headers and binary to Versions/A if they exist at root
   const items = ['Headers', 'opencv2'];
-  items.forEach(item => {
+  for (item of items) {
     const rootItem = path.join(frameworkPath, item);
     const versionedItem = path.join(currentPath, item);
 
@@ -56,7 +56,7 @@ function createSymlinks(frameworkPath) {
         console.error(`Failed to create symlink for ${item}:`, error);
       }
     }
-  });
+  }
 
   // Create "Current" symlink in Versions if it doesn't exist
   const currentSymlink = path.join(versionsPath, 'Current');
@@ -68,6 +68,8 @@ function createSymlinks(frameworkPath) {
     }
   }
 }
+
+const archs = ['ios-arm64', 'ios-arm64_x86_64-simulator'];
 
 const withOpenCVFramework = (config) => {
   return withDangerousMod(config, [
@@ -85,7 +87,7 @@ const withOpenCVFramework = (config) => {
         }
 
         // Process both device and simulator frameworks
-        ['ios-arm64', 'ios-arm64_x86_64-simulator'].forEach(arch => {
+        for (const arch of archs) {
           const frameworkPath = path.join(xcframeworkPath, arch, 'opencv2.framework');
           if (fs.existsSync(frameworkPath)) {
             console.log(`Creating opencv2 symlinks for ${arch}...`);
@@ -93,8 +95,7 @@ const withOpenCVFramework = (config) => {
           } else {
             console.error(`Framework not found at ${frameworkPath}`);
           }
-        });
-
+        }
       } catch (error) {
         console.error('Error in withOpenCVFramework:', error);
         throw error;
