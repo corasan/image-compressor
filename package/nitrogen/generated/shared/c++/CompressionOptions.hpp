@@ -36,6 +36,7 @@ namespace margelo::nitro::imagecompressor {
     std::optional<std::string> outputFormat     SWIFT_PRIVATE;
 
   public:
+    CompressionOptions() = default;
     explicit CompressionOptions(std::optional<double> quality, std::optional<double> maxWidth, std::optional<double> maxHeight, std::optional<std::string> outputFormat): quality(quality), maxWidth(maxWidth), maxHeight(maxHeight), outputFormat(outputFormat) {}
   };
 
@@ -47,7 +48,7 @@ namespace margelo::nitro {
 
   // C++ CompressionOptions <> JS CompressionOptions (object)
   template <>
-  struct JSIConverter<CompressionOptions> {
+  struct JSIConverter<CompressionOptions> final {
     static inline CompressionOptions fromJSI(jsi::Runtime& runtime, const jsi::Value& arg) {
       jsi::Object obj = arg.asObject(runtime);
       return CompressionOptions(

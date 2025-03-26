@@ -49,7 +49,7 @@ namespace margelo::nitro::imagecompressor {
       explicit HybridImageCompressorSpec(): HybridObject(TAG) { }
 
       // Destructor
-      virtual ~HybridImageCompressorSpec() { }
+      ~HybridImageCompressorSpec() override = default;
 
     public:
       // Properties
